@@ -1,275 +1,371 @@
-# EX 1 : Avand lista
-# masini = ['Audi', 'Volvo', 'BMW', 'Mercedes', 'Aston Martin', 'Lastun', 'Fiat', 'Trabant', 'Opel']
-#
-# a)	Folositi un for ca sa iterati prin toata lista si sa afisati
-# ‘Masina mea preferata este x’
-# b)	Faceti acelasi lucru cu un for each
-# c)	Faceti acelasi lucru cu un while
+"""
+Pentru toate exercitiile
+Apelati functia de cel putin 2 ori cu valori diferite pentru a testa
+Daca functia are return, printati raspunsul
+"""
 
-masini = ['Audi', 'Volvo', 'BMW', 'Mercedes', 'Aston Martin', 'Lastun', 'Fiat', 'Trabant', 'Opel']
 
-# cazul cu for
-for i in range(len(masini)):
-    print(f'FOR: Masina mea preferata este: {masini[i]}')
 
-# cazul cu for each
-for masina in masini:
-    print(f'FOR EAACH: Masina mea preferata este: {masina}')
+'''1. Functie care sa calculeze si sa returneze suma a 2 numere'''
 
-# cazul cu while
-i = 0
-while i < len(masini):
-    print(f'WHIE: Masina mea preferata este: {masini[i]}')
-    i = i + 1
+def suma_numere(x, y):
+    suma = x + y
+    return (f'Suma celor doua numere este: {suma}')
 
-# EX 2: Aceeasi lista
-# Folositi un for else
-# In for: Modificati elementele din lista astfel incat sa fie scrie cu majuscule, exceptand primul si ultimul
-# Pe else: Printati varianta finala a listei
+# cazul in care putem introduce numerele de la tastatura, e mai dinamic
+x = int(input('Introdu primul numar: '))
+y = int(input('Introdu al doilea numar: '))
 
-for i in range(1, len(masini)-1):       # ne deplasam de la a doua poz pana la penultima
-    masini[i] = masini[i].upper()
-else:
-    print(masini)
+print(suma_numere(x, y))
 
-# EX 3: Aceeasi lista,
-# Vine un cumparator care doreste sa cumpere un Mercedes
-# Itereaza prin ea prin modalitatea aleasă de tine
-# Daca masina e mercedes:
-#    Printam ‘am gasit masina dorita de dvs’
-#    Iesim din ciclu folosind un cuvant cheie care face acest lucru
-# Altfel
-#    Printam Am gasit masina X. Mai cautam
+# cazul in care punem argumentele cand apelam functia
+print(suma_numere(8, 10))
+print(suma_numere(50, 65))
 
-masini = ['Audi', 'Volvo', 'BMW', 'Mercedes', 'Aston Martin', 'Lastun', 'Fiat', 'Trabant', 'Opel']
-for masina in masini:
-    if masina == 'Mercedes':
-        print(f'Am gasit masina dorita de dvs {masina}')
-        break
+
+
+'''2. Functie care sa returneze TRUE daca un numar este par, FALSE pt impar'''
+
+def par_impar(numar):  # definim functia si ii punem parametrul numar
+    if numar % 2 == 0:  # verificam prin modulo daca este par
+        return True
     else:
-        print(f'Am gasit masina {masina}. Mai cautam')
+        return False
 
-# EX 4: Aceasi lista
-# Vine un cumparator bogat dar indecis. Ii vom prezenta toate masinile cu exceptia Trabant si Lastun.
-# Daca masina e Trabant sau Lastun
-#    Folositi un cuvant cheie care sa dea skip la ce urmeaza (nu trebuie else)
-# Printati "S-ar putea sa va placa masina x"
 
-for masina in masini:
-    if masina == "Trabant" or masina == 'Lastun':
-        continue
-    print(f'S-ar putea sa va placa masina {masina}')
+print(par_impar(84))
+print(par_impar(75))
 
-# EX 5: Modernizati parcul de masini
-# Creati o lista goala, masini_vechi
-# Iterati prin masini
-# Cand gasiti Lastun sau Trabant:
-# -	Salvati aceste masini in masini_vechi
-# -	Suprascrieti-le cu ‘Tesla’ (in lista initiala de masini)
-# Printati Modele vechi: x si Modele noi: x
 
-masini_vechi = []
 
-for masina in masini:
-    if masina == 'Lastun' or masina == 'Trabant':
-        masini_vechi.append(masina)
-        index = masini.index(masina)
-        masini[index] = 'Tesla'
-print('Modele vechi:', masini_vechi)
-print('Modele noi:', masini)
+'''3. Functie care returneaza numarul total de caractere din numele tau complet.
+(nume, prenume, nume_mijlociu) 
+'''
 
-# EX 6: Avand dict
-# pret_masini = {
-#     'Dacia': 6800,
-#     'Lastun': 500,
-#     'Opel': 1100,
-#     'Audi': 19000,
-#     'BMW': 23000
-# }
-# Vine un client cu un buget de 15000 euro
-# Prezentati doar masinile care se incadreaza in acest buget
-# Iterati prin dict.items() si accesati masina si pretul
-# Printati "Pentru un buget de sub 15000 euro puteti alege masina x"
-# Iterati prin lista
+def total_caractere(nume, prenume1, prenume2):
+    return len(nume + prenume1 + prenume2)
 
-pret_masini = {
-    'Dacia': 6800,
-    'Lastun': 500,
-    'Opel': 1100,
-    'Audi': 19000,
-    'BMW': 23000
-}
-BUGET = 15000
-for masina, pret in pret_masini.items():
-    if pret <= BUGET:
-        print(f'Pentru un buget de pana in {BUGET} euro puteti alege masina: {masina}')
 
-# EX 7: Avand lista
-# numere = [5, 7, 3, 9, 3, 3, 1, 0, -4, 3]
-# Iterati prin ea
-# Afisati de cate ori apare 3
-# (nu aveti voie sa folositi count)
+print(total_caractere('Popescu', 'George', 'Dan'))
+print(total_caractere('Ionescu', 'Daniela', 'Andreea'))
 
-numere = [5, 7, 3, 9, 3, 3, 1, 0, -4, 3]
 
-total = 0
-for numar in numere:
-    if numar == 3:
-        total = total + 1
-print(f'Numarul 3 apare de {total} ori in lista de numere')
 
-# EX 8: Aceeasi lista
-# Iterati prin ea
-# Calculati si afisati suma numerelor
-# (nu aveti voie sa folositi sum)
+'''4. Functie care returneaza aria dreptunghiului'''
 
-numere = [5, 7, 3, 9, 3, 3, 1, 0, -4, 3]
-suma = 0
-for numar in numere:
-    suma = suma + numar
-print(f'Suma numerelor din lista este: {suma}')
+def aria_dreptunghi(lungime, latime):
+    aria = lungime * latime
+    return aria
 
-# EX 9: Aceeasi lista
-# Iterati prin ea
-# Afisati cel mai mare numar
-# (nu aveti voie sa folositi max)
 
-numere = [5, 7, 3, 9, 3, 3, 1, 0, -4, 3]
-#numere = [-3, -2, -1] # de test, din aceasta cauza max nu poate fi 0, ci trebuie sa fie un elem din lista
-max = numere[0]
-for numar in numere:
-    if numar > max:
-        max = numar
-print(f'Cel mai mare numar din lista este: {max}')
+print(aria_dreptunghi(8, 5))
+print(aria_dreptunghi(10, 45))
 
-# EX 10: Aceeasi lista
-# Iterati prin ea
-# Daca numarul e pozitiv, inlocuiti-l cu valoarea lui negativa
-# Ex: daca e 3, sa devina -3
-# Afisati noua lista
 
-numere = [5, 7, 3, 9, 3, 3, 1, 0, -4, 3]
-lista_neg = []
-for numar in numere:
-    if numar > 0:
-        numar = numar - numar*2
-        #numar = -(abs(numar)) # alta solutie
-    lista_neg.append(numar)
-print(f'Lista a devenit: {lista_neg}')
 
-# EX 11: alte_numere = [-5, 7, 2, 9, 12, 3, 1, -6, -4, 3]
-# numere_pare = []
-# numere_impare = []
-# numere_pozitive = []
-# numere_negative = []
-# Iterati prin lista alte_numere
-# Populati corect celelalte liste
-# Afisati cele 4 liste la final
+'''5. Functie care returneaza aria cercului'''
 
-alte_numere = [-5, 7, 2, 9, 12, 3, 1, -6, -4, 3]
-numere_pare = []
-numere_impare = []
-numere_pozitive = []
-numere_negative = []
-for numar in alte_numere:
-    if numar % 2 == 0:
-        numere_pare.append(numar)
+def aria_cercului(raza):
+    aria = raza * raza * 3.14
+    return aria
+
+
+print(aria_cercului(6))
+print(aria_cercului(10))
+
+
+
+'''6. Functie care returneaza True daca un caracter x se gaseste intr-un string dat. Fasle daca nu'''
+
+def cautare_caracter(string, x):
+    if x in string:
+        return True
     else:
-        numere_impare.append(numar)
-    if numar > 0:
-        numere_pozitive.append(numar)
+        return False
+
+
+print(cautare_caracter('abc', 'a'))
+print(cautare_caracter('abc', 'd'))
+
+
+
+'''7. Functie fara return, primeste un string si printeaza pe ecran:
+Nr de caractere lower case este x
+Nr de caractere upper case exte y '''
+
+def lower_upper(string):
+    char_upper = 0
+    char_lower = 0
+    for char in string:
+        if char.isupper():
+            char_upper = char_upper + 1
+        elif char.islower():
+            char_lower = char_lower + 1
+    print(f'Numarul de caractere mari este: {char_upper}')
+    print(f'Numarul de caractere mici este: {char_lower}')
+
+
+lower_upper('abc1ABCD!')
+lower_upper('AnareMereTest')
+
+
+
+'''8. Functie care primeste o LISTA de numere si returneaza o LISTA doar cu numerele pozitive'''
+
+def numere_pozitive(numere):
+    lista_numere_pozitive = []
+    for numar in numere:
+        if numar > 0:
+            lista_numere_pozitive.append(numar)
+    return lista_numere_pozitive
+
+
+lista_numere = [1, -4, 78, -5, 0, 85, 4, -10, -2]
+print(numere_pozitive(lista_numere))
+
+
+
+
+'''9. Functie care nu returneaza nimic. Primeste 2 numere si PRINTEAZA
+Primul numar x este mai mare decat al doilea nr y
+Al doilea nr y este mai mare decat primul nr x
+Numerele sunt egale. '''
+
+def doua_numere(x, y):
+    if x == y:
+        print(f'Numerele sunt egale')
+    elif x > y:
+        print(f'Primul numar {x} este mai mare decat al doilea nr {y}')
     else:
-        numere_negative.append(numar)
-print(f'Lista cu numere pare este: {numere_pare}')
-print(f'Lista cu numere impare este: {numere_impare}')
-print(f'Lista cu numere pozitive este: {numere_pozitive}')
-print(f'Lista cu numere negative este: {numere_negative}')
+        print(f'Al doilea nr {y} este mai mare decat primul nr {x}')
 
-# EX 12: Aceeasi lista
-# Ordonati crescator lista fara sa folositi sort
-# Va puteti inspira vizual de aici
-# https://www.youtube.com/watch?v=lyZQPjUT5B4
 
-alte_numere = [-5, 7, 2, 9, 12, 3, 1, -6, -4, 3]
-for i in range(len(alte_numere)):
-    for j in range(i + 1, len(alte_numere)):
-        if alte_numere[i] > alte_numere[j]:
-            alte_numere[i], alte_numere[j] = alte_numere[j], alte_numere[i]
-print(alte_numere)
+doua_numere(89, -5)
+doua_numere(7, 46)
 
-# EX 13: Ghicitoare de numar
-# numar_secret = Generati un numar random intre 1 si 30
-# Numar_ghicit = None
-# Folosind un while
-#    User alege un numar
-#    Programul ii spune:
-# -	Nr secret e mai mare
-# -	Nr secret e mai mic
-# -	Felicitari! Ai ghicit!
 
-import random
 
-numar_secret = random.randint(1, 30)
-numar_ghicit = None
-while numar_ghicit is None:
-    nr = int(input('Introdu un numar: '))
-    if nr > numar_secret:
-        print('Numarul secret este mai mic')
-    elif nr < numar_secret:
-        print('Numarul secret este mai mare')
+'''10. Functie care primeste un numar si un set de numere.
+Printeaza ‘am adaugat numarul nou in set’ + returneaza True
+Sau Printeaza ‘nu am adaugat numarul in set. Acesta exista deja’ + returneaza False'''
+
+def adaugare_numar(set_numere, numar_nou):
+    if numar_nou in set_numere:
+        print(f'nu am adaugat numarul {numar_nou} in set, exista deja')
+        return False
     else:
-        print('Felicitari, ai gasit numarul!')
-        break
+        set_numere.add(numar_nou)
+        print(f'am adaugat numarul {numar_nou} in set')
+        return True
 
 
-# EX 14: Alegeti un numar de la tastatura
-# Ex:7
-# Scrieti un program care sa genereze in consola urmatoarea piramida
-# 1
-# 22
-# 333
-# 4444
-# 55555
-# 666666
-# 7777777
-#
-# Ex:3
-# 1
-# 22
-# 333
+set_numere_input = {2, 5, 8, 78, -8, 45}
+set_numere_input = {2, 5, 8, 78, -8, 45}
 
-nr = int(input("Scrie un numar: "))
-i = 1
-while i <= nr:
-    print(' ')
-    for j in range(i):
-        j = i
-        print(j, end='')
-        j = j + 1
-    i = i + 1
+print(adaugare_numar(set_numere_input, 78))
+print(adaugare_numar(set_numere_input, 75))
 
 
-# EX 15: tastatura_telefon = [
-#   [1, 2, 3],
-#   [4, 5, 6],
-#   [7, 8, 9],
-#   [0]
-# ]
-# Iterati prin lista 2d
-# Printati ‘Cifra curenta este x’
-# (hint: nested for - adica for in for)
 
-tastatura_telefon = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [0]
-]
-for i in range(len(tastatura_telefon)):
-    for j in range(len(tastatura_telefon[i])):
-        print(f'Cifra curenta este {tastatura_telefon[i][j]}')
 
-# sau cu for each
-for row in tastatura_telefon:
-    for column in row:
-        print(f'FOR EACH: Cifra curenta este {column}')
+'''c. Optionale (may need google)
+
+11. Functie care primeste o luna din an si returneaza cate zile are acea luna'''
+
+def calendar(luna):
+    lunile_anului = {
+        'January': 31,
+        'February': 28,
+        'March': 31,
+        'April': 30,
+        'May': 31,
+        'June': 30,
+        'July': 31,
+        'August': 31,
+        'September': 30,
+        'October': 31,
+        'November': 30,
+        'December': 31
+    }
+    if luna in lunile_anului:
+        return lunile_anului.get(luna)
+
+
+print(calendar('June'))
+print(calendar('January'))
+print(calendar('February'))
+
+
+
+
+'''
+12
+Functie calculator care sa returneze 4 valori 
+Suma, diferenta, inmultirea, impartirea a 2 numere
+'''
+
+def calculator(x, y):
+    a = x + y
+    b = x - y
+    c = x * y
+    d = x / y
+    return a, b, c, d
+
+
+a, b, c, d = calculator(3, 2)
+
+print("Suma: ", a)
+print("Diferenta: ", b)
+print("Inmultirea: ", c)
+print("Impartirea: ", d)
+
+
+
+'''
+13. Functie care primeste o lista de cifre (adica doar 0-9)
+# Ex: [1, 3, 1, 5, 9, 7, 7, 5, 5]
+# Returneaza un DICT care ne spune de cate ori apare fiecare litera
+'''
+
+def count(lista):
+    cnt = {
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+        6: 0,
+        7: 0,
+        8: 0,
+        9: 0
+    }
+    for i in cnt.keys():
+        for j in lista:
+            if i == j:
+                cnt[i] = cnt[i] + 1
+    return cnt
+
+
+lista1 = [1, 1, 2, 7, 7, 7]
+
+print(count(lista1))
+
+
+
+'''
+14. Functie care primeste 3 numere
+Returneaza valoarea maxima dintre ele
+
+'''
+
+def maxim(a, b, c):
+    if a == b and b == c:
+        max = a
+    elif a >= b and a >= c:
+        max = a
+    elif b >= a and b >= c:
+        max = b
+    else:
+        max = c
+    return max
+
+
+print(maxim(5, 7, 2))  # returneaza 7
+print(maxim(7, 6, 2))  # returneaza 7
+print(maxim(5, 6, 7))  # returneaza 7
+print(maxim(4, 4, 4))  # returneaza 4
+print(maxim(4, 3, 3))  # returneaza 4
+print(maxim(3, 4, 3))  # returneaza 4
+print(maxim(3, 3, 4))  # returneaza 4
+
+
+
+'''
+15. Functie care sa primeasca un numar si sa retunreze suma tuturor numerelor de la 0 la acel numar
+Ex: daca dam nr 3
+Suma va fi 6 (0+1+2+3)
+
+'''
+
+def suma_num(a):
+    suma = 0
+    for i in range(0, a + 1):
+        suma = suma + i
+    return suma
+
+
+print(suma_num(3))  # returneaza 6
+
+
+
+'''
+16. Functie care primesete 2 liste de numere (numerele pot fi dublate)
+Returnati numerele comune
+
+Ex:
+list1 = [1, 1, 2, 3]
+list2 = [2, 2, 3, 4]
+Raspuns: {2, 3}
+'''
+
+def common_nr(l1, l2):
+    set1 = set(l1)
+    set2 = set(l2)
+    return set1.intersection(set2)
+
+
+list1 = [1, 1, 2, 3]
+list2 = [2, 2, 3, 4]
+
+print(common_nr(list1, list2))
+
+
+
+'''
+17. Functie care sa aplice o reducere de pret
+Daca produsul costa 100 lei si aplicam reducere de 10%
+Pretul va fi 90
+Tratati cazurile in care reducerea e invalida. De ex o reducere de 110% e invalida
+
+'''
+
+def reducere_preturi(price, sale):
+    if sale > 100 or sale < 0:
+        return 'reducere invalida'
+    new_price = price - (sale / 100) * price
+    return new_price
+
+
+print(reducere_preturi(100, 10))  # 90
+print(reducere_preturi(100, -1))  # no
+print(reducere_preturi(100, 101))  # no
+
+
+
+'''
+18. Functie care sa afiseze data si ora curenta din ro
+'''
+from datetime import datetime
+
+def data_ora():
+    date_time = datetime.now()
+    dt_string = date_time.strftime("%d/%m/%Y %H:%M:%S")
+    print("Date and Time: ", dt_string)
+
+
+data_ora()
+
+
+
+# 19. Functie care sa afiseze cate zile mai sunt pana la ziua ta / sau pana la craciun daca nu vrei sa ne zici cand e ziua ta :)
+
+from datetime import date
+
+def amr_xmas(year):
+    christmas_day = date(year=year, month=12, day=25)
+    days_til_christmas = (christmas_day - date.today()).days
+    return days_til_christmas
+
+
+print(amr_xmas(2022))
